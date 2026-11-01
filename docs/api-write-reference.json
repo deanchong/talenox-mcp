@@ -1,0 +1,4417 @@
+{
+  "source": "https://talenox.github.io/api-doc/",
+  "operations": [
+    {
+      "group": "Branches",
+      "title": "Create Branch",
+      "anchor": "create-branch",
+      "method": "POST",
+      "path": "branches",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Name of Branch"
+        },
+        {
+          "name": "address",
+          "description": "Address"
+        },
+        {
+          "name": "postcode",
+          "description": "Postcode"
+        },
+        {
+          "name": "head_id",
+          "description": "Branch Head (Should be an Employee ID)"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs (If specified, will override the existing employees in the branch)."
+        }
+      ],
+      "example": {
+        "branch": {
+          "name": "Sample Branch",
+          "address": "666 Feest Branch",
+          "postcode": "44125",
+          "head_id": 856,
+          "employee_ids": [
+            857,
+            858,
+            856,
+            859
+          ]
+        }
+      }
+    },
+    {
+      "group": "Branches",
+      "title": "Delete Branch",
+      "anchor": "delete-branch",
+      "method": "DELETE",
+      "path": "branches/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Branch ID"
+        }
+      ]
+    },
+    {
+      "group": "Branches",
+      "title": "Update Branch",
+      "anchor": "update-branch",
+      "method": "PUT",
+      "path": "branches/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Branch ID"
+        }
+      ],
+      "example": {
+        "branch": {
+          "name": "New Branch Name",
+          "employee_ids": [
+            882,
+            883,
+            884,
+            885
+          ]
+        }
+      }
+    },
+    {
+      "group": "Company Settings",
+      "title": "Update Company Settings",
+      "anchor": "update-company-settings",
+      "method": "PUT",
+      "path": "company_settings",
+      "fields": [
+        {
+          "name": "api_allows_employee_multiple_cost_centres",
+          "description": "Set this to true for cost centres endpoint to accept multiple cost centres for any employee. (This is to avoid breaking previous API implementation)"
+        }
+      ],
+      "example": {
+        "company_settings": {
+          "api_allows_employee_multiple_cost_centres": true
+        }
+      }
+    },
+    {
+      "group": "Cost Centres",
+      "title": "Create Cost Centre",
+      "anchor": "create-cost-centre",
+      "method": "POST",
+      "path": "cost_centres",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Name of Cost Centre"
+        },
+        {
+          "name": "enable_custom_cpf_csn",
+          "description": "Enable custom CPF Submission"
+        },
+        {
+          "name": "custom_cpf_scn",
+          "description": "Custom CPF Number"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs (If specified, will override the existing employees in the cost centre). Set api_allows_employee_multiple_cost_centres of Company Settings to true to allow placement the same employee in multiple cost centres."
+        }
+      ],
+      "example": {
+        "cost_centre": {
+          "name": "Business",
+          "employee_ids": [
+            "9vtrgqc6yd",
+            "zyxj2h9ibs",
+            "jpa5tp10d3",
+            "5e767y9nrq"
+          ],
+          "enable_custom_cpf_csn": true,
+          "custom_cpf_csn": "123456789"
+        }
+      }
+    },
+    {
+      "group": "Cost Centres",
+      "title": "Delete Cost Centre",
+      "anchor": "delete-cost-centre",
+      "method": "DELETE",
+      "path": "cost_centres/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Cost Centre ID"
+        }
+      ]
+    },
+    {
+      "group": "Cost Centres",
+      "title": "Update Cost Centre",
+      "anchor": "update-cost-centre",
+      "method": "PUT",
+      "path": "cost_centres/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Cost Centre ID"
+        }
+      ],
+      "example": {
+        "cost_centre": {
+          "name": "Engineer",
+          "employee_ids": [
+            "s4lntb24w9",
+            "rc3msca250",
+            "f1tcdizmh3",
+            "vy6fypv7bq"
+          ],
+          "enable_custom_cpf_csn": true,
+          "custom_cpf_csn": "123456788"
+        }
+      }
+    },
+    {
+      "group": "Custom Pay Items",
+      "title": "Create Custom Pay Item",
+      "anchor": "create-custom-pay-item",
+      "method": "POST",
+      "path": "payroll/custom_pay_items",
+      "fields": [
+        {
+          "name": "proration_enabled",
+          "description": "Proration Enabled"
+        },
+        {
+          "name": "categoary",
+          "description": "Category ([\"Recurring\", \"Adhoc\", \"Attendance\", \"Additional\"])"
+        },
+        {
+          "name": "item_type",
+          "description": "Item Type"
+        },
+        {
+          "name": "gross_net_settings",
+          "description": "Gross/Net settings"
+        },
+        {
+          "name": "tax",
+          "description": "Tax"
+        },
+        {
+          "name": "payslip_display_settings",
+          "description": "Payslip Display Settings ([\"Item Name\", \"Remarks\", \"Period\", \"Calculation\"])"
+        },
+        {
+          "name": "overtime_rate",
+          "description": "Overtime rate (for Attendance category only)"
+        },
+        {
+          "name": "additional_sg_info_attributes",
+          "description": "SG pay item related fields"
+        },
+        {
+          "name": "cpf",
+          "description": "CPF"
+        },
+        {
+          "name": "sdl",
+          "description": "SDL"
+        },
+        {
+          "name": "shg",
+          "description": "SHG"
+        },
+        {
+          "name": "cpf_owage_awage",
+          "description": "OWAGE/AWAGE"
+        },
+        {
+          "name": "additional_hk_info_attributes",
+          "description": "HK pay item related fields"
+        },
+        {
+          "name": "mpf",
+          "description": "MPF"
+        },
+        {
+          "name": "adw",
+          "description": "ADW"
+        },
+        {
+          "name": "additional_my_info_attributes",
+          "description": "MY pay item related fields"
+        },
+        {
+          "name": "epf",
+          "description": "EPF"
+        },
+        {
+          "name": "socso",
+          "description": "SOCSO"
+        },
+        {
+          "name": "eis",
+          "description": "EIS"
+        },
+        {
+          "name": "hrdf",
+          "description": "HRDF"
+        },
+        {
+          "name": "additional_id_info_attributes",
+          "description": "ID pay item related fields"
+        },
+        {
+          "name": "bpjs",
+          "description": "BPJS"
+        },
+        {
+          "name": "thr",
+          "description": "THR"
+        }
+      ],
+      "example": {
+        "custom_pay_item": {
+          "proration_enabled": false,
+          "category": "Recurring",
+          "item_type": "Salary/Wages",
+          "gross_net_settings": "gross",
+          "tax": true,
+          "payslip_display_settings": [
+            "Item Name",
+            "Remarks"
+          ],
+          "overtime_rate": 1.5,
+          "additional_sg_info_attributes": {
+            "cpf": true,
+            "sdl": true,
+            "shg": true,
+            "cpf_owage_awage": "owage"
+          },
+          "additional_hk_info_attributes": {
+            "mpf": true,
+            "adw": true
+          },
+          "additional_my_info_attributes": {
+            "epf": true,
+            "socso": true,
+            "eis": true,
+            "hrdf": true
+          },
+          "additional_id_info_attributes": {
+            "bpjs": true,
+            "thr": true
+          }
+        }
+      }
+    },
+    {
+      "group": "Custom Pay Items",
+      "title": "Delete Custom Pay Item",
+      "anchor": "delete-custom-pay-item",
+      "method": "DELETE",
+      "path": "payroll/custom_pay_items/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Custom Pay Item ID"
+        }
+      ]
+    },
+    {
+      "group": "Custom Pay Items",
+      "title": "Update Custom Pay Item",
+      "anchor": "update-custom-pay-item",
+      "method": "PATCH",
+      "path": "payroll/custom_pay_items/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Custom Pay Item ID"
+        }
+      ],
+      "example": {
+        "custom_pay_item": {
+          "proration_enabled": false,
+          "category": "Recurring",
+          "item_type": "Allowance",
+          "gross_net_settings": "gross",
+          "tax": true,
+          "payslip_display_settings": [
+            "Item Name",
+            "Remarks"
+          ],
+          "overtime_rate": 1.5,
+          "additional_sg_info_attributes": {
+            "cpf": true,
+            "sdl": true,
+            "shg": true,
+            "cpf_owage_awage": "owage"
+          },
+          "additional_hk_info_attributes": {
+            "mpf": true,
+            "adw": true
+          },
+          "additional_my_info_attributes": {
+            "epf": true,
+            "socso": true,
+            "eis": true,
+            "hrdf": true
+          },
+          "additional_id_info_attributes": {
+            "bpjs": true,
+            "thr": true
+          }
+        }
+      }
+    },
+    {
+      "group": "Employee Roles",
+      "title": "Create Role",
+      "anchor": "create-role",
+      "method": "POST",
+      "path": "roles",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Role name"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs (If specified, will override the existing employees for the role)."
+        }
+      ],
+      "example": {
+        "role": {
+          "name": "Manager",
+          "employee_ids": [
+            1719,
+            1718,
+            1720,
+            1721
+          ]
+        }
+      }
+    },
+    {
+      "group": "Employee Roles",
+      "title": "Delete Role",
+      "anchor": "delete-role",
+      "method": "DELETE",
+      "path": "roles/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Role ID"
+        }
+      ]
+    },
+    {
+      "group": "Employee Roles",
+      "title": "Update Role",
+      "anchor": "update-role",
+      "method": "PUT",
+      "path": "roles/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Role ID"
+        }
+      ],
+      "example": {
+        "role": {
+          "name": "New Role Name",
+          "employee_ids": [
+            1744,
+            1745,
+            1746,
+            1747
+          ]
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Create HK Employee",
+      "anchor": "create-hk-employee",
+      "method": "POST",
+      "path": "employees",
+      "fields": [
+        {
+          "name": "invite_user",
+          "description": "If true will create a talenox user for the employee and invite them"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "first_name required",
+          "description": "First name"
+        },
+        {
+          "name": "last_name",
+          "description": "Last name"
+        },
+        {
+          "name": "chinese_name",
+          "description": "Chinese name"
+        },
+        {
+          "name": "nickname",
+          "description": "Nickname"
+        },
+        {
+          "name": "identification_full_name",
+          "description": "Identification full name"
+        },
+        {
+          "name": "email required",
+          "description": "Email address"
+        },
+        {
+          "name": "hired_date",
+          "description": "Hired date"
+        },
+        {
+          "name": "confirmation_date",
+          "description": "Confirmation date"
+        },
+        {
+          "name": "resign_date",
+          "description": "Resign date"
+        },
+        {
+          "name": "contact_number",
+          "description": "Contact number"
+        },
+        {
+          "name": "office_did",
+          "description": "Office Direct Inward Dialing (DID) Number"
+        },
+        {
+          "name": "ssn required",
+          "description": "Identification number"
+        },
+        {
+          "name": "ssn_should_validate",
+          "description": "Should valdate identification number"
+        },
+        {
+          "name": "citizenship required",
+          "description": "Immigration status"
+        },
+        {
+          "name": "nationality",
+          "description": "Nationality"
+        },
+        {
+          "name": "gender",
+          "description": "Gender"
+        },
+        {
+          "name": "race",
+          "description": "Race"
+        },
+        {
+          "name": "religion",
+          "description": "Religion"
+        },
+        {
+          "name": "marital_status",
+          "description": "Marital status"
+        },
+        {
+          "name": "birthdate",
+          "description": "Birth date"
+        },
+        {
+          "name": "passport_number",
+          "description": "Passport number"
+        },
+        {
+          "name": "passport_date_of_issue",
+          "description": "Passport issue date"
+        },
+        {
+          "name": "passport_date_of_expiry",
+          "description": "Passport expiry date"
+        },
+        {
+          "name": "passport_place_of_issue",
+          "description": "Passport place of issue"
+        },
+        {
+          "name": "vaccination_status",
+          "description": "Vaccination status"
+        },
+        {
+          "name": "vaccine_brand",
+          "description": "Vaccine brand"
+        },
+        {
+          "name": "date_of_first_dose",
+          "description": "Date of first dose"
+        },
+        {
+          "name": "date_of_second_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccine_booster_brand",
+          "description": "Vaccine booster brand"
+        },
+        {
+          "name": "date_of_booster_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccination_remarks",
+          "description": "Vaccination remarks"
+        },
+        {
+          "name": "payment_method required",
+          "description": "Payment type"
+        },
+        {
+          "name": "cost_centre_id",
+          "description": "Default Cost centre ID (Same as default_cost_centre_id)"
+        },
+        {
+          "name": "default_cost_centre_id",
+          "description": "Default Cost centre ID (Set the company setting api_allows_employee_multiple_cost_centres to true to avoid resetting employee cost centres when changing default_cost_centre_id value)"
+        },
+        {
+          "name": "cost_centre_ids",
+          "description": "Cost centre IDs (to assign employee to multiple cost centres)"
+        },
+        {
+          "name": "blood_group",
+          "description": "Blood group"
+        },
+        {
+          "name": "leaving_country",
+          "description": "Leaving country"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "accounting_split",
+          "description": "Accounting split"
+        },
+        {
+          "name": "employee_can_update_custom_fields",
+          "description": "Employee can update custom fields"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "reason_for_cessation",
+          "description": "Reason for cessation"
+        },
+        {
+          "name": "other_reason_for_cessation",
+          "description": "Other reason for cessation"
+        },
+        {
+          "name": "custom_fields",
+          "description": "Custom fields"
+        },
+        {
+          "name": "current_job_attributes",
+          "description": "Below are Employee's Job related fields"
+        },
+        {
+          "name": "title",
+          "description": "Job title"
+        },
+        {
+          "name": "department",
+          "description": "Department"
+        },
+        {
+          "name": "start_date",
+          "description": "Job start date"
+        },
+        {
+          "name": "end_date",
+          "description": "Job end date"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        },
+        {
+          "name": "currency",
+          "description": "Currency"
+        },
+        {
+          "name": "amount",
+          "description": "Basic pay amount"
+        },
+        {
+          "name": "bank_account_parameters",
+          "description": "Below are Employee's Bank Account related fields"
+        },
+        {
+          "name": "bank_type",
+          "description": "Bank name"
+        },
+        {
+          "name": "bank_code",
+          "description": "Bank code"
+        },
+        {
+          "name": "account_name",
+          "description": "Bank account name"
+        },
+        {
+          "name": "number",
+          "description": "Bank account number"
+        },
+        {
+          "name": "branch_code",
+          "description": "Branch code"
+        },
+        {
+          "name": "branch_name",
+          "description": "Branch name"
+        },
+        {
+          "name": "swift_code",
+          "description": "Bank swift code"
+        },
+        {
+          "name": "payment_code",
+          "description": "Payment code (Hang Seng and HSBC only)"
+        },
+        {
+          "name": "dbs_company_id",
+          "description": "DBS company ID (DBS only)"
+        },
+        {
+          "name": "employee_using_cheque",
+          "description": "Employee using cheque"
+        },
+        {
+          "name": "location_parameters",
+          "description": "Below are Employee's Address related fields"
+        },
+        {
+          "name": "line_1",
+          "description": "Address line 1"
+        },
+        {
+          "name": "line_2",
+          "description": "Address line 2"
+        },
+        {
+          "name": "postal_code",
+          "description": "Postal code"
+        },
+        {
+          "name": "state",
+          "description": "State"
+        },
+        {
+          "name": "country_name",
+          "description": "Country name"
+        },
+        {
+          "name": "additional_hk_employee_info_parameters",
+          "description": "Below are HK Employee's related fields"
+        },
+        {
+          "name": "voluntary_employee_contribution_type",
+          "description": "MPF Voluntary Employee Additional Contribution Type ([\"Percentage\", \"Fixed Amount\"])"
+        },
+        {
+          "name": "voluntary_employee_contribution",
+          "description": "MPF Voluntary Employee Additional amount (If percentage is chosen, must be one of [\"3%\", \"5%\", \"6%\", \"7%\", \"8%\", \"9%\", \"10%\", \"11%\", \"12%\", \"13%\", \"14%\", \"15%\"])"
+        },
+        {
+          "name": "voluntary_employee_contribution_setting",
+          "description": "MPF Voluntary Employee Deduction Setting ([\"Gross Salary\", \"Net Salary\"])"
+        },
+        {
+          "name": "voluntary_employer_contribution_type",
+          "description": "MPF Voluntary Employer Additional Contribution Type ([\"Percentage\", \"Fixed Amount\"])"
+        },
+        {
+          "name": "voluntary_employer_contribution",
+          "description": "MPF Voluntary Employer Additional amount (If percentage is chosen, must be one of [\"3%\", \"5%\", \"6%\", \"7%\", \"8%\", \"9%\", \"10%\", \"11%\", \"12%\", \"13%\", \"14%\", \"15%\"])"
+        },
+        {
+          "name": "voluntary_employer_contribution_setting",
+          "description": "MPF Voluntary Employer Deduction Setting ([\"Gross Salary\", \"Net Salary\"])"
+        },
+        {
+          "name": "mpf_scheme required",
+          "description": "MPF Scheme. 0 => Master trust scheme, 2 => Not contributing MPF"
+        },
+        {
+          "name": "mpf_employee_type",
+          "description": "MPF employee type ([\"regular\", \"casual\"])"
+        },
+        {
+          "name": "mpf_member_account_number",
+          "description": "MPF account number"
+        },
+        {
+          "name": "mpf_enrolled_date",
+          "description": "MPF enrolled date"
+        },
+        {
+          "name": "identification_expiry_date",
+          "description": "Identification expiry date. When you use the API to update this field, we will map to the immigration expiry field. E.g. for IANG, we will map to iang_expiry_date."
+        },
+        {
+          "name": "identification_issue_date",
+          "description": "Identification issue date. When you use the API to update this field, we will map to the immigration issue field. E.g. for IANG, we will map to iang_issue_date."
+        },
+        {
+          "name": "non_pr_issue_date",
+          "description": "Non PR Issue Date"
+        },
+        {
+          "name": "non_pr_expiry_date",
+          "description": "Non PR Expiry Date"
+        },
+        {
+          "name": "foreigner_issue_date",
+          "description": "Foreigner Issue Date"
+        },
+        {
+          "name": "foreigner_expiry_date",
+          "description": "Foreigner Expiry Date"
+        },
+        {
+          "name": "iang_issue_date",
+          "description": "IANG Issue Date"
+        },
+        {
+          "name": "iang_expiry_date",
+          "description": "IANG Expiry Date"
+        },
+        {
+          "name": "student_issue_date",
+          "description": "Student Issue Date"
+        },
+        {
+          "name": "student_expiry_date",
+          "description": "Student Expiry Date"
+        },
+        {
+          "name": "dependants_issue_date",
+          "description": "Dependants Issue Date"
+        },
+        {
+          "name": "dependants_expiry_date",
+          "description": "Dependants Expiry Date"
+        },
+        {
+          "name": "gep_issue_date",
+          "description": "GEP Issue Date"
+        },
+        {
+          "name": "gep_expiry_date",
+          "description": "GEP Expiry Date"
+        },
+        {
+          "name": "qmas_issue_date",
+          "description": "QMAS Issue Date"
+        },
+        {
+          "name": "qmas_expiry_date",
+          "description": "QMAS Expiry Date"
+        },
+        {
+          "name": "ttps_issue_date",
+          "description": "TTPS Issue Date"
+        },
+        {
+          "name": "ttps_expiry_date",
+          "description": "TTPS Expiry Date"
+        }
+      ],
+      "example": {
+        "invite_user": true,
+        "employee": {
+          "employee_id": 1,
+          "first_name": "Hafsah",
+          "last_name": "Haigh",
+          "identification_full_name": "Hafsah Haigh",
+          "email": "test@gmail.com",
+          "payment_method": "Bank Transfer",
+          "hired_date": "1/1/2015",
+          "contact_number": 123456789,
+          "ssn": "S1111111D",
+          "citizenship": "Hong Kong Permanent Resident",
+          "nationality": "Chinese",
+          "gender": "Male",
+          "marital_status": "Single",
+          "passport_number": "MA123456",
+          "passport_date_of_issue": "01/01/2017",
+          "passport_date_of_expiry": "01/12/2022",
+          "passport_place_of_issue": "Singapore",
+          "vaccination_status": "Fully Vaccinated",
+          "vaccine_brand": "Pfizer-BioNTech",
+          "date_of_first_dose": "01/01/2021",
+          "date_of_second_dose": "01/11/2021",
+          "vaccine_booster_brand": "Pfizer-BioNTech",
+          "date_of_booster_dose": "01/12/2021",
+          "vaccination_remarks": "",
+          "chinese_name": "Xing Zexi",
+          "nickname": "Jerry",
+          "birthdate": "01/01/2015",
+          "confirmation_date": "01/01/2019",
+          "default_cost_centre_id": "",
+          "custom_fields": {
+            "Education": {
+              "CGPA": "4.00",
+              "University": "Example University"
+            }
+          },
+          "current_job_attributes": {
+            "title": "Front-end Engineer",
+            "department": "Engineer",
+            "start_date": "01/01/2015",
+            "rate_of_pay": "Monthly",
+            "currency": "SGD",
+            "amount": 4000
+          },
+          "bank_account_attributes": {
+            "bank_type": "DBS",
+            "bank_code": 1,
+            "account_name": "Hafsah Haigh",
+            "number": 131231231231231230,
+            "branch_code": 1,
+            "branch_name": "",
+            "swift_code": "",
+            "payment_code": 1,
+            "dbs_company_id": ""
+          },
+          "additional_hk_employee_info_attributes": {
+            "voluntary_employee_contribution": 100,
+            "voluntary_employer_contribution": 200,
+            "mpf_scheme": 0,
+            "mpf_member_account_number": 123123123,
+            "mpf_enrolled_date": "01/01/2015"
+          },
+          "location_attributes": {
+            "line_1": "Address Line 1",
+            "line_2": "Address Line 2",
+            "postal_code": 12345,
+            "state": null,
+            "country_name": "Singapore"
+          }
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Create ID Employee",
+      "anchor": "create-id-employee",
+      "method": "POST",
+      "path": "employees",
+      "fields": [
+        {
+          "name": "invite_user",
+          "description": "If true will create a talenox user for the employee and invite them"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "first_name required",
+          "description": "First name"
+        },
+        {
+          "name": "last_name",
+          "description": "Last name"
+        },
+        {
+          "name": "chinese_name",
+          "description": "Chinese name"
+        },
+        {
+          "name": "nickname",
+          "description": "Nickname"
+        },
+        {
+          "name": "identification_full_name",
+          "description": "Identification full name"
+        },
+        {
+          "name": "email required",
+          "description": "Email address"
+        },
+        {
+          "name": "hired_date",
+          "description": "Hired date"
+        },
+        {
+          "name": "confirmation_date",
+          "description": "Confirmation date"
+        },
+        {
+          "name": "resign_date",
+          "description": "Resign date"
+        },
+        {
+          "name": "contact_number",
+          "description": "Contact number"
+        },
+        {
+          "name": "office_did",
+          "description": "Office Direct Inward Dialing (DID) Number"
+        },
+        {
+          "name": "ssn required",
+          "description": "Identification number"
+        },
+        {
+          "name": "ssn_should_validate",
+          "description": "Should valdate identification number"
+        },
+        {
+          "name": "citizenship required",
+          "description": "Immigration status"
+        },
+        {
+          "name": "nationality",
+          "description": "Nationality"
+        },
+        {
+          "name": "gender",
+          "description": "Gender"
+        },
+        {
+          "name": "race",
+          "description": "Race"
+        },
+        {
+          "name": "religion",
+          "description": "Religion"
+        },
+        {
+          "name": "marital_status",
+          "description": "Marital status"
+        },
+        {
+          "name": "birthdate",
+          "description": "Birth date"
+        },
+        {
+          "name": "passport_number",
+          "description": "Passport number"
+        },
+        {
+          "name": "passport_date_of_issue",
+          "description": "Passport issue date"
+        },
+        {
+          "name": "passport_date_of_expiry",
+          "description": "Passport expiry date"
+        },
+        {
+          "name": "passport_place_of_issue",
+          "description": "Passport place of issue"
+        },
+        {
+          "name": "vaccination_status",
+          "description": "Vaccination status"
+        },
+        {
+          "name": "vaccine_brand",
+          "description": "Vaccine brand"
+        },
+        {
+          "name": "date_of_first_dose",
+          "description": "Date of first dose"
+        },
+        {
+          "name": "date_of_second_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccine_booster_brand",
+          "description": "Vaccine booster brand"
+        },
+        {
+          "name": "date_of_booster_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccination_remarks",
+          "description": "Vaccination remarks"
+        },
+        {
+          "name": "payment_method required",
+          "description": "Payment type"
+        },
+        {
+          "name": "cost_centre_id",
+          "description": "Default Cost centre ID (Same as default_cost_centre_id)"
+        },
+        {
+          "name": "default_cost_centre_id",
+          "description": "Default Cost centre ID (Set the company setting api_allows_employee_multiple_cost_centres to true to avoid resetting employee cost centres when changing default_cost_centre_id value)"
+        },
+        {
+          "name": "cost_centre_ids",
+          "description": "Cost centre IDs (to assign employee to multiple cost centres)"
+        },
+        {
+          "name": "blood_group",
+          "description": "Blood group"
+        },
+        {
+          "name": "leaving_country",
+          "description": "Leaving country"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "accounting_split",
+          "description": "Accounting split"
+        },
+        {
+          "name": "employee_can_update_custom_fields",
+          "description": "Employee can update custom fields"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "reason_for_cessation",
+          "description": "Reason for cessation"
+        },
+        {
+          "name": "other_reason_for_cessation",
+          "description": "Other reason for cessation"
+        },
+        {
+          "name": "custom_fields",
+          "description": "Custom fields"
+        },
+        {
+          "name": "current_job_attributes",
+          "description": "Below are Employee's Job related fields"
+        },
+        {
+          "name": "title",
+          "description": "Job title"
+        },
+        {
+          "name": "department",
+          "description": "Department"
+        },
+        {
+          "name": "start_date",
+          "description": "Job start date"
+        },
+        {
+          "name": "end_date",
+          "description": "Job end date"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        },
+        {
+          "name": "currency",
+          "description": "Currency"
+        },
+        {
+          "name": "amount",
+          "description": "Basic pay amount"
+        },
+        {
+          "name": "bank_account_parameters",
+          "description": "Below are Employee's Bank Account related fields"
+        },
+        {
+          "name": "bank_type",
+          "description": "Bank name"
+        },
+        {
+          "name": "bank_code",
+          "description": "Bank code"
+        },
+        {
+          "name": "account_name",
+          "description": "Bank account name"
+        },
+        {
+          "name": "number",
+          "description": "Bank account number"
+        },
+        {
+          "name": "branch_code",
+          "description": "Branch code"
+        },
+        {
+          "name": "branch_name",
+          "description": "Branch name"
+        },
+        {
+          "name": "swift_code",
+          "description": "Bank swift code"
+        },
+        {
+          "name": "payment_code",
+          "description": "Payment code (Hang Seng and HSBC only)"
+        },
+        {
+          "name": "dbs_company_id",
+          "description": "DBS company ID (DBS only)"
+        },
+        {
+          "name": "employee_using_cheque",
+          "description": "Employee using cheque"
+        },
+        {
+          "name": "location_parameters",
+          "description": "Below are Employee's Address related fields"
+        },
+        {
+          "name": "line_1",
+          "description": "Address line 1"
+        },
+        {
+          "name": "line_2",
+          "description": "Address line 2"
+        },
+        {
+          "name": "postal_code",
+          "description": "Postal code"
+        },
+        {
+          "name": "state",
+          "description": "State"
+        },
+        {
+          "name": "country_name",
+          "description": "Country name"
+        },
+        {
+          "name": "additional_id_employee_info_parameters",
+          "description": "Below are ID Employee's related fields"
+        },
+        {
+          "name": "tax_processing_date required",
+          "description": "Tax Processing Date"
+        },
+        {
+          "name": "ptkp required",
+          "description": "PTKP / Tax Deductions Category"
+        },
+        {
+          "name": "npwp",
+          "description": "NPWP / Tax Identification Number"
+        },
+        {
+          "name": "tax_scheme required",
+          "description": "Tax Scheme"
+        },
+        {
+          "name": "previous_past_net",
+          "description": "Previous Past Net"
+        },
+        {
+          "name": "previous_past_tax",
+          "description": "Previous Past Tax"
+        },
+        {
+          "name": "previous_past_net_tax_effective_date",
+          "description": "Previous Past Net & Tax Effective Date"
+        },
+        {
+          "name": "bpjs_tk_process_date",
+          "description": "BPJS TK Process Date"
+        },
+        {
+          "name": "bpjs_tk_number",
+          "description": "BPJS TK Number"
+        },
+        {
+          "name": "bpjs_tk_policy required",
+          "description": "BPJS JKK Policy"
+        },
+        {
+          "name": "bpjs_tk_jht_borne_by_employer required",
+          "description": "BPJS JHT borne by employer"
+        },
+        {
+          "name": "bpjs_jp_policy required",
+          "description": "BPJS JP Policy"
+        },
+        {
+          "name": "bpjs_jp_borne_by_employer required",
+          "description": "BPJS JP borne by employer"
+        },
+        {
+          "name": "work_accident_insurance_contribution_rate",
+          "description": "BPJS JKK Contribution Rate (Required if BPJS JKK Policy is registered)"
+        },
+        {
+          "name": "bpjs_jkm_policy required",
+          "description": "BPJS JKM Policy"
+        },
+        {
+          "name": "bpjs_tk_jht_policy required",
+          "description": "BPJS JHT Policy"
+        },
+        {
+          "name": "bpjs_kesehatan_process_date",
+          "description": "BPJS Kesehatan Process Date"
+        },
+        {
+          "name": "bpjs_kesehatan_number",
+          "description": "BPJS Kesehatan Number"
+        },
+        {
+          "name": "bpjs_kesehatan_policy required",
+          "description": "BPJS Kesehatan Policy"
+        },
+        {
+          "name": "no_of_bpjs_kesehatan_dependents",
+          "description": "BPJS Kesehatan Additional Dependants"
+        },
+        {
+          "name": "bpjs_kesehatan_borne_by_employer required",
+          "description": "BPJS Kesehatan borne by employer"
+        }
+      ],
+      "example": {
+        "invite_user": true,
+        "employee": {
+          "employee_id": 1,
+          "first_name": "Hafsah",
+          "last_name": "Haigh",
+          "identification_full_name": "Hafsah Haigh",
+          "email": "test@gmail.com",
+          "payment_method": "Bank Transfer",
+          "hired_date": "1/1/2015",
+          "contact_number": 123456789,
+          "ssn": "S1111111D",
+          "citizenship": "KTP (Residential Identity Card)",
+          "nationality": "Chinese",
+          "gender": "Male",
+          "marital_status": "Single",
+          "passport_number": "MA123456",
+          "passport_date_of_issue": "01/01/2017",
+          "passport_date_of_expiry": "01/12/2022",
+          "passport_place_of_issue": "Singapore",
+          "vaccination_status": "Fully Vaccinated",
+          "vaccine_brand": "Pfizer-BioNTech",
+          "date_of_first_dose": "01/01/2021",
+          "date_of_second_dose": "01/11/2021",
+          "vaccine_booster_brand": "Pfizer-BioNTech",
+          "date_of_booster_dose": "01/12/2021",
+          "vaccination_remarks": "",
+          "chinese_name": "Xing Zexi",
+          "nickname": "Jerry",
+          "birthdate": "01/01/2015",
+          "confirmation_date": "01/01/2019",
+          "default_cost_centre_id": "",
+          "custom_fields": {
+            "Education": {
+              "CGPA": "4.00",
+              "University": "Example University"
+            }
+          },
+          "current_job_attributes": {
+            "title": "Front-end Engineer",
+            "department": "Engineer",
+            "start_date": "01/01/2015",
+            "rate_of_pay": "Monthly",
+            "currency": "SGD",
+            "amount": 4000
+          },
+          "bank_account_attributes": {
+            "bank_type": "Standard Chartered",
+            "bank_code": 1,
+            "account_name": "Hafsah Haigh",
+            "number": 131231231231231230,
+            "branch_code": 1,
+            "branch_name": "",
+            "swift_code": "",
+            "payment_code": 1,
+            "dbs_company_id": ""
+          },
+          "additional_id_employee_info_attributes": {
+            "tax_processing_date": "01/01/2015",
+            "ptkp": "TK/0",
+            "npwp": "1234567891234567",
+            "tax_scheme": "gross",
+            "previous_past_net": 100,
+            "previous_past_tax": 100,
+            "previous_past_net_tax_effective_date": "01/01/2015",
+            "bpjs_tk_process_date": "01/01/2015",
+            "bpjs_tk_number": "1234567891234567",
+            "bpjs_tk_policy": "registered",
+            "work_accident_insurance_contribution_rate": "0.24%",
+            "bpjs_kesehatan_process_date": "01/01/2015",
+            "bpjs_kesehatan_number": "1234567891234567",
+            "bpjs_kesehatan_policy": "registered",
+            "no_of_bpjs_kesehatan_dependents": 1,
+            "bpjs_kesehatan_borne_by_employer": true,
+            "bpjs_tk_jht_borne_by_employer": true,
+            "bpjs_jp_borne_by_employer": true,
+            "bpjs_jkm_policy": "registered",
+            "bpjs_jp_policy": "registered",
+            "bpjs_tk_jht_policy": "registered"
+          },
+          "location_attributes": {
+            "line_1": "Address Line 1",
+            "line_2": "Address Line 2",
+            "postal_code": 12345,
+            "state": null,
+            "country_name": "Singapore"
+          },
+          "ssn_should_validate": false
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Create MY Employee",
+      "anchor": "create-my-employee",
+      "method": "POST",
+      "path": "employees",
+      "fields": [
+        {
+          "name": "invite_user",
+          "description": "If true will create a talenox user for the employee and invite them"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "first_name required",
+          "description": "First name"
+        },
+        {
+          "name": "last_name",
+          "description": "Last name"
+        },
+        {
+          "name": "chinese_name",
+          "description": "Chinese name"
+        },
+        {
+          "name": "nickname",
+          "description": "Nickname"
+        },
+        {
+          "name": "identification_full_name",
+          "description": "Identification full name"
+        },
+        {
+          "name": "email required",
+          "description": "Email address"
+        },
+        {
+          "name": "hired_date",
+          "description": "Hired date"
+        },
+        {
+          "name": "confirmation_date",
+          "description": "Confirmation date"
+        },
+        {
+          "name": "resign_date",
+          "description": "Resign date"
+        },
+        {
+          "name": "contact_number",
+          "description": "Contact number"
+        },
+        {
+          "name": "office_did",
+          "description": "Office Direct Inward Dialing (DID) Number"
+        },
+        {
+          "name": "ssn required",
+          "description": "Identification number"
+        },
+        {
+          "name": "ssn_should_validate",
+          "description": "Should valdate identification number"
+        },
+        {
+          "name": "citizenship required",
+          "description": "Immigration status"
+        },
+        {
+          "name": "nationality",
+          "description": "Nationality"
+        },
+        {
+          "name": "gender",
+          "description": "Gender"
+        },
+        {
+          "name": "race",
+          "description": "Race"
+        },
+        {
+          "name": "religion",
+          "description": "Religion"
+        },
+        {
+          "name": "marital_status",
+          "description": "Marital status"
+        },
+        {
+          "name": "birthdate",
+          "description": "Birth date"
+        },
+        {
+          "name": "passport_number",
+          "description": "Passport number"
+        },
+        {
+          "name": "passport_date_of_issue",
+          "description": "Passport issue date"
+        },
+        {
+          "name": "passport_date_of_expiry",
+          "description": "Passport expiry date"
+        },
+        {
+          "name": "passport_place_of_issue",
+          "description": "Passport place of issue"
+        },
+        {
+          "name": "vaccination_status",
+          "description": "Vaccination status"
+        },
+        {
+          "name": "vaccine_brand",
+          "description": "Vaccine brand"
+        },
+        {
+          "name": "date_of_first_dose",
+          "description": "Date of first dose"
+        },
+        {
+          "name": "date_of_second_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccine_booster_brand",
+          "description": "Vaccine booster brand"
+        },
+        {
+          "name": "date_of_booster_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccination_remarks",
+          "description": "Vaccination remarks"
+        },
+        {
+          "name": "payment_method required",
+          "description": "Payment type"
+        },
+        {
+          "name": "cost_centre_id",
+          "description": "Default Cost centre ID (Same as default_cost_centre_id)"
+        },
+        {
+          "name": "default_cost_centre_id",
+          "description": "Default Cost centre ID (Set the company setting api_allows_employee_multiple_cost_centres to true to avoid resetting employee cost centres when changing default_cost_centre_id value)"
+        },
+        {
+          "name": "cost_centre_ids",
+          "description": "Cost centre IDs (to assign employee to multiple cost centres)"
+        },
+        {
+          "name": "blood_group",
+          "description": "Blood group"
+        },
+        {
+          "name": "leaving_country",
+          "description": "Leaving country"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "accounting_split",
+          "description": "Accounting split"
+        },
+        {
+          "name": "employee_can_update_custom_fields",
+          "description": "Employee can update custom fields"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "reason_for_cessation",
+          "description": "Reason for cessation"
+        },
+        {
+          "name": "other_reason_for_cessation",
+          "description": "Other reason for cessation"
+        },
+        {
+          "name": "custom_fields",
+          "description": "Custom fields"
+        },
+        {
+          "name": "current_job_attributes",
+          "description": "Below are Employee's Job related fields"
+        },
+        {
+          "name": "title",
+          "description": "Job title"
+        },
+        {
+          "name": "department",
+          "description": "Department"
+        },
+        {
+          "name": "start_date",
+          "description": "Job start date"
+        },
+        {
+          "name": "end_date",
+          "description": "Job end date"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        },
+        {
+          "name": "currency",
+          "description": "Currency"
+        },
+        {
+          "name": "amount",
+          "description": "Basic pay amount"
+        },
+        {
+          "name": "bank_account_parameters",
+          "description": "Below are Employee's Bank Account related fields"
+        },
+        {
+          "name": "bank_type",
+          "description": "Bank name"
+        },
+        {
+          "name": "bank_code",
+          "description": "Bank code"
+        },
+        {
+          "name": "account_name",
+          "description": "Bank account name"
+        },
+        {
+          "name": "number",
+          "description": "Bank account number"
+        },
+        {
+          "name": "branch_code",
+          "description": "Branch code"
+        },
+        {
+          "name": "branch_name",
+          "description": "Branch name"
+        },
+        {
+          "name": "swift_code",
+          "description": "Bank swift code"
+        },
+        {
+          "name": "payment_code",
+          "description": "Payment code (Hang Seng and HSBC only)"
+        },
+        {
+          "name": "dbs_company_id",
+          "description": "DBS company ID (DBS only)"
+        },
+        {
+          "name": "employee_using_cheque",
+          "description": "Employee using cheque"
+        },
+        {
+          "name": "location_parameters",
+          "description": "Below are Employee's Address related fields"
+        },
+        {
+          "name": "line_1",
+          "description": "Address line 1"
+        },
+        {
+          "name": "line_2",
+          "description": "Address line 2"
+        },
+        {
+          "name": "postal_code",
+          "description": "Postal code"
+        },
+        {
+          "name": "state",
+          "description": "State"
+        },
+        {
+          "name": "country_name",
+          "description": "Country name"
+        },
+        {
+          "name": "additional_my_employee_info_parameters",
+          "description": "Below are MY Employee's related fields"
+        },
+        {
+          "name": "is_contributing_epf",
+          "description": "Is employee contributing to EPF (For Malaysia employee)"
+        },
+        {
+          "name": "epf_number",
+          "description": "EPF number"
+        },
+        {
+          "name": "employee_epf_setting",
+          "description": "Employee EPF setting"
+        },
+        {
+          "name": "employer_epf_setting",
+          "description": "Employer EPF setting"
+        },
+        {
+          "name": "pcb_number",
+          "description": "PCB number"
+        },
+        {
+          "name": "socso_setting",
+          "description": "SOCSO setting"
+        },
+        {
+          "name": "socso_number",
+          "description": "SOCSO number"
+        },
+        {
+          "name": "skbbk_contribution_required",
+          "description": "Contribute SOCSO Lindung 24 Jam"
+        },
+        {
+          "name": "work_permit_expiry_date",
+          "description": "Work permit expiry date"
+        },
+        {
+          "name": "disabled_individual",
+          "description": "Is Disabled individual"
+        },
+        {
+          "name": "disabled_spouse",
+          "description": "Is Disabled spouse"
+        },
+        {
+          "name": "pcb_borne_by_employer",
+          "description": "Pcb borne by employer"
+        },
+        {
+          "name": "has_eis",
+          "description": "Has EIS"
+        },
+        {
+          "name": "zakat_number",
+          "description": "Zakat Number"
+        },
+        {
+          "name": "zakat_amount",
+          "description": "Zakat Amount"
+        },
+        {
+          "name": "is_contributing_hrdf",
+          "description": "Contribute HRDF? (For Malaysia employee)"
+        },
+        {
+          "name": "accumulated_remuneration_bik_vola",
+          "description": "Accumulated remuneration/Benefit-In-Kind (BIK)/Value Of Living Accomodation (VOLA)"
+        },
+        {
+          "name": "accumulated_deductions_epf_and_other_funds",
+          "description": "Accumulated EPF and Other Approved Funds [do not include life premium insurance]"
+        },
+        {
+          "name": "accumulated_deductions_mtd",
+          "description": "Accumulated MTD paid (including MTD on additional remuneration)"
+        },
+        {
+          "name": "accumulated_deductions_zakat_paid",
+          "description": "Accumulated Zakat paid"
+        },
+        {
+          "name": "accumulated_deductions_medical_treatment_special_needs_or_carer",
+          "description": "Accumulated Medical expenses for own parents, special need and parent care"
+        },
+        {
+          "name": "accumulated_deductions_father_relief",
+          "description": "Accumulated Father Relief"
+        },
+        {
+          "name": "accumulated_deductions_mother_relief",
+          "description": "Accumulated Mother Relief"
+        },
+        {
+          "name": "accumulated_deductions_basic_supporting_equipment",
+          "description": "Accumulated Basic supporting equipment for disabled self, spouse, child or parent"
+        },
+        {
+          "name": "accumulated_deductions_higher_education_fees_self",
+          "description": "Accumulated Education fees"
+        },
+        {
+          "name": "accumulated_deductions_medical_expenses_on_serious_diseases",
+          "description": "Accumulated Medical expenses on serious diseases for self, spouse or child"
+        },
+        {
+          "name": "accumulated_deductions_complete_medical_examination",
+          "description": "Accumulated Complete medical examination for self, spouse or child"
+        },
+        {
+          "name": "accumulated_deductions_net_deposit_in_sspn",
+          "description": "Accumulated Net deposit in Skim Simpanan Pendidikan Nasional (SSPN)"
+        },
+        {
+          "name": "accumulated_deductions_payment_of_alimony_to_former_wife",
+          "description": "Accumulated Payment of alimony to former wife"
+        },
+        {
+          "name": "accumulated_deductions_contribution_to_private_retirement_schem",
+          "description": "Accumulated Deferred annuity premium or contribution to Private Retriement Scheme"
+        },
+        {
+          "name": "accumulated_deductions_education_and_medical_insurance",
+          "description": "Accumulated Education and medical insurance premium"
+        },
+        {
+          "name": "accumulated_deductions_interest_on_housing_loan",
+          "description": "Accumulated Interest on Housing Loan"
+        },
+        {
+          "name": "accumulated_deductions_tax_deduction_for_lifestyle",
+          "description": "Accumulated Purchase of readings, computer, smartphone, tablet, sport equipment, gymnasium membership and subscription of broadband internet"
+        },
+        {
+          "name": "accumulated_deductions_tax_deduction_for_purchase_of_breastfeed",
+          "description": "Accumulated Purchase of Breastfeeding Equipment(deduction is allowed once every 2 years for women tax payer only)"
+        },
+        {
+          "name": "accumulated_deductions_tax_deduction_for_fees_paid_to_child_car",
+          "description": "Accumulated Fees paid to Child Care Centre and Kindergartens"
+        },
+        {
+          "name": "accumulated_deductions_socso_payment",
+          "description": "Accumulated SOCSO Contribution"
+        },
+        {
+          "name": "accumulated_deductions_life_insurance_for_retired_civil_servant",
+          "description": "Accumulated life insurance for retired civil servant"
+        },
+        {
+          "name": "accumulated_deductions_life_insurance_for_other_than_retired_ci",
+          "description": "Accumulated life insurance for other than retired civil servant"
+        },
+        {
+          "name": "accumulated_deductions_sports_equipment_rental_registration_fee",
+          "description": "Accumulated sports equipment for sports activities"
+        },
+        {
+          "name": "accumulated_deductions_purchase_of_personal_computer_smartphone",
+          "description": "Accumulated purchase of personal computer, smartphone or tablet"
+        },
+        {
+          "name": "accumulated_deductions_fee_at_registered_premises_and_tourist_a",
+          "description": "Accumulated accommodation fee at the accommodation premises registered"
+        },
+        {
+          "name": "accumulated_deductions_expenses_on_electric_vehicle_charging_fa",
+          "description": "Accumulated expenses on Electric Vehicle Charging Facilities and equipment"
+        },
+        {
+          "name": "noc_under_18_full",
+          "description": "Eligible children full deduction(RM2000 each)"
+        },
+        {
+          "name": "noc_under_18_half",
+          "description": "Eligible children half deduction(RM2000 each)"
+        },
+        {
+          "name": "noc_18_above_studying_degree_in_malaysia_full",
+          "description": "Above 18 years and studying full time in Degree level onwards (inside Malaysia) (Full deduction)"
+        },
+        {
+          "name": "noc_18_above_studying_degree_in_malaysia_half",
+          "description": "Above 18 years and studying full time in Degree level onwards (inside Malaysia) (Half deduction)"
+        },
+        {
+          "name": "noc_18_above_studying_diploma_in_malaysia_full",
+          "description": "Above 18 years and studying full time in diploma level onwards (inside Malaysia) (Full deduction)"
+        },
+        {
+          "name": "noc_18_above_studying_diploma_in_malaysia_half",
+          "description": "Above 18 years and studying full time in diploma level onwards (inside Malaysia) (Half deduction)"
+        },
+        {
+          "name": "noc_18_above_studying_at_least_degree_outside_malaysia_full",
+          "description": "Above 18 years and studying full time in Degree level onwards (outside Malaysia) (Full deduction)"
+        },
+        {
+          "name": "noc_18_above_studying_at_least_degree_outside_malaysia_half",
+          "description": "Above 18 years and studying full time in Degree level onwards (outside Malaysia) (Half deduction)"
+        },
+        {
+          "name": "noc_disabled_full",
+          "description": "Disabled children (Full deduction)"
+        },
+        {
+          "name": "noc_disabled_half",
+          "description": "Disabled children (Half deduction)"
+        },
+        {
+          "name": "noc_disabled_studying_at_least_diploma_full",
+          "description": "Disabled child studying in diploma or higher level (in Malaysia)/degree or its equivalent (outside Malaysia)"
+        },
+        {
+          "name": "noc_disabled_studying_at_least_diploma_half",
+          "description": "Disabled child studying in diploma or higher level (in Malaysia)/degree or its equivalent (outside Malaysia)"
+        },
+        {
+          "name": "accumulated_month",
+          "description": "Accumulated month"
+        },
+        {
+          "name": "accumulated_year",
+          "description": "Accumulated year"
+        }
+      ],
+      "example": {
+        "invite_user": true,
+        "employee": {
+          "employee_id": 1,
+          "first_name": "Hafsah",
+          "last_name": "Haigh",
+          "identification_full_name": "Hafsah Haigh",
+          "email": "test@gmail.com",
+          "payment_method": "Bank Transfer",
+          "hired_date": "1/1/2015",
+          "contact_number": 123456789,
+          "ssn": "S1111111D",
+          "citizenship": "Resident",
+          "nationality": "Chinese",
+          "gender": "Male",
+          "marital_status": "Married and Spouse Not Working",
+          "passport_number": "MA123456",
+          "passport_date_of_issue": "01/01/2017",
+          "passport_date_of_expiry": "01/12/2022",
+          "passport_place_of_issue": "Singapore",
+          "vaccination_status": "Fully Vaccinated",
+          "vaccine_brand": "Pfizer-BioNTech",
+          "date_of_first_dose": "01/01/2021",
+          "date_of_second_dose": "01/11/2021",
+          "vaccine_booster_brand": "Pfizer-BioNTech",
+          "date_of_booster_dose": "01/12/2021",
+          "vaccination_remarks": "",
+          "chinese_name": "Xing Zexi",
+          "nickname": "Jerry",
+          "birthdate": "01/01/2015",
+          "confirmation_date": "01/01/2019",
+          "default_cost_centre_id": "",
+          "custom_fields": {
+            "Education": {
+              "CGPA": "4.00",
+              "University": "Example University"
+            }
+          },
+          "current_job_attributes": {
+            "title": "Front-end Engineer",
+            "department": "Engineer",
+            "start_date": "01/01/2015",
+            "rate_of_pay": "Monthly",
+            "currency": "SGD",
+            "amount": 4000
+          },
+          "bank_account_attributes": {
+            "bank_type": "DBS",
+            "bank_code": 1,
+            "account_name": "Hafsah Haigh",
+            "number": 131231231231231230,
+            "branch_code": 1,
+            "branch_name": "",
+            "swift_code": "",
+            "payment_code": 1,
+            "dbs_company_id": ""
+          },
+          "additional_my_employee_info_attributes": {
+            "is_contributing_epf": true,
+            "epf_number": 123456789,
+            "employee_epf_setting": "Statutory Default",
+            "employer_epf_setting": "12%",
+            "pcb_number": 12312312,
+            "socso_setting": "Employment Injury Scheme and Invalidity Scheme",
+            "socso_number": 123123124,
+            "work_permit_expiry_date": "31/12/2026",
+            "disabled_individual": false,
+            "disabled_spouse": false,
+            "has_eis": true,
+            "zakat_number": 123123123,
+            "zakat_amount": 1000,
+            "accumulated_remuneration_bik_vola": 50.2,
+            "accumulated_deductions_epf_and_other_funds": 100.9,
+            "accumulated_deductions_mtd": 700.22,
+            "accumulated_deductions_zakat_paid": 500.4,
+            "accumulated_year": 2018,
+            "accumulated_deductions_medical_treatment_special_needs_or_carer": 50.4,
+            "accumulated_deductions_father_relief": 2000.9,
+            "accumulated_deductions_mother_relief": 3020,
+            "accumulated_deductions_basic_supporting_equipment": 2400,
+            "accumulated_deductions_higher_education_fees_self": 5090,
+            "accumulated_deductions_medical_expenses_on_serious_diseases": 1900,
+            "accumulated_deductions_complete_medical_examination": 990,
+            "accumulated_deductions_net_deposit_in_sspn": 13123,
+            "accumulated_deductions_payment_of_alimony_to_former_wife": 500.12,
+            "accumulated_deductions_contribution_to_private_retirement_schem": 1000.2,
+            "accumulated_deductions_education_and_medical_insurance": 2000.59,
+            "accumulated_deductions_interest_on_housing_loan": 290.1,
+            "accumulated_deductions_tax_deduction_for_lifestyle": 900.5,
+            "accumulated_deductions_tax_deduction_for_purchase_of_breastfeed": 200,
+            "accumulated_deductions_tax_deduction_for_fees_paid_to_child_car": 1300,
+            "noc_under_18_full": 1,
+            "noc_under_18_half": 2,
+            "noc_18_above_studying_degree_in_malaysia_full": 3,
+            "noc_18_above_studying_degree_in_malaysia_half": 4,
+            "noc_18_above_studying_diploma_in_malaysia_full": 5,
+            "noc_18_above_studying_diploma_in_malaysia_half": 6,
+            "noc_18_above_studying_at_least_degree_outside_malaysia_full": 7,
+            "noc_18_above_studying_at_least_degree_outside_malaysia_half": 8,
+            "noc_disabled_full": 9,
+            "noc_disabled_half": 1,
+            "noc_disabled_studying_at_least_diploma_full": 2,
+            "noc_disabled_studying_at_least_diploma_half": 2,
+            "accumulated_month": "September",
+            "accumulated_month_year": "01/10/2018"
+          },
+          "location_attributes": {
+            "line_1": "Address Line 1",
+            "line_2": "Address Line 2",
+            "postal_code": 12345,
+            "state": "Johor",
+            "country_name": "Malaysia"
+          }
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Create SG Employee",
+      "anchor": "create-sg-employee",
+      "method": "POST",
+      "path": "employees",
+      "fields": [
+        {
+          "name": "invite_user",
+          "description": "If true will create a talenox user for the employee and invite them"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "first_name required",
+          "description": "First name"
+        },
+        {
+          "name": "last_name",
+          "description": "Last name"
+        },
+        {
+          "name": "chinese_name",
+          "description": "Chinese name"
+        },
+        {
+          "name": "nickname",
+          "description": "Nickname"
+        },
+        {
+          "name": "identification_full_name",
+          "description": "Identification full name"
+        },
+        {
+          "name": "email required",
+          "description": "Email address"
+        },
+        {
+          "name": "hired_date",
+          "description": "Hired date"
+        },
+        {
+          "name": "confirmation_date",
+          "description": "Confirmation date"
+        },
+        {
+          "name": "resign_date",
+          "description": "Resign date"
+        },
+        {
+          "name": "contact_number",
+          "description": "Contact number"
+        },
+        {
+          "name": "office_did",
+          "description": "Office Direct Inward Dialing (DID) Number"
+        },
+        {
+          "name": "ssn required",
+          "description": "Identification number"
+        },
+        {
+          "name": "ssn_should_validate",
+          "description": "Should valdate identification number"
+        },
+        {
+          "name": "citizenship required",
+          "description": "Immigration status"
+        },
+        {
+          "name": "nationality",
+          "description": "Nationality"
+        },
+        {
+          "name": "gender",
+          "description": "Gender"
+        },
+        {
+          "name": "race",
+          "description": "Race"
+        },
+        {
+          "name": "religion",
+          "description": "Religion"
+        },
+        {
+          "name": "marital_status",
+          "description": "Marital status"
+        },
+        {
+          "name": "birthdate",
+          "description": "Birth date"
+        },
+        {
+          "name": "passport_number",
+          "description": "Passport number"
+        },
+        {
+          "name": "passport_date_of_issue",
+          "description": "Passport issue date"
+        },
+        {
+          "name": "passport_date_of_expiry",
+          "description": "Passport expiry date"
+        },
+        {
+          "name": "passport_place_of_issue",
+          "description": "Passport place of issue"
+        },
+        {
+          "name": "vaccination_status",
+          "description": "Vaccination status"
+        },
+        {
+          "name": "vaccine_brand",
+          "description": "Vaccine brand"
+        },
+        {
+          "name": "date_of_first_dose",
+          "description": "Date of first dose"
+        },
+        {
+          "name": "date_of_second_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccine_booster_brand",
+          "description": "Vaccine booster brand"
+        },
+        {
+          "name": "date_of_booster_dose",
+          "description": "Date of second dose"
+        },
+        {
+          "name": "vaccination_remarks",
+          "description": "Vaccination remarks"
+        },
+        {
+          "name": "payment_method required",
+          "description": "Payment type"
+        },
+        {
+          "name": "cost_centre_id",
+          "description": "Default Cost centre ID (Same as default_cost_centre_id)"
+        },
+        {
+          "name": "default_cost_centre_id",
+          "description": "Default Cost centre ID (Set the company setting api_allows_employee_multiple_cost_centres to true to avoid resetting employee cost centres when changing default_cost_centre_id value)"
+        },
+        {
+          "name": "cost_centre_ids",
+          "description": "Cost centre IDs (to assign employee to multiple cost centres)"
+        },
+        {
+          "name": "blood_group",
+          "description": "Blood group"
+        },
+        {
+          "name": "leaving_country",
+          "description": "Leaving country"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "accounting_split",
+          "description": "Accounting split"
+        },
+        {
+          "name": "employee_can_update_custom_fields",
+          "description": "Employee can update custom fields"
+        },
+        {
+          "name": "employee_attachment_access",
+          "description": "Employee attachment access"
+        },
+        {
+          "name": "reason_for_cessation",
+          "description": "Reason for cessation"
+        },
+        {
+          "name": "other_reason_for_cessation",
+          "description": "Other reason for cessation"
+        },
+        {
+          "name": "custom_fields",
+          "description": "Custom fields"
+        },
+        {
+          "name": "current_job_attributes",
+          "description": "Below are Employee's Job related fields"
+        },
+        {
+          "name": "title",
+          "description": "Job title"
+        },
+        {
+          "name": "department",
+          "description": "Department"
+        },
+        {
+          "name": "start_date",
+          "description": "Job start date"
+        },
+        {
+          "name": "end_date",
+          "description": "Job end date"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        },
+        {
+          "name": "currency",
+          "description": "Currency"
+        },
+        {
+          "name": "amount",
+          "description": "Basic pay amount"
+        },
+        {
+          "name": "bank_account_parameters",
+          "description": "Below are Employee's Bank Account related fields"
+        },
+        {
+          "name": "bank_type",
+          "description": "Bank name"
+        },
+        {
+          "name": "bank_code",
+          "description": "Bank code"
+        },
+        {
+          "name": "account_name",
+          "description": "Bank account name"
+        },
+        {
+          "name": "number",
+          "description": "Bank account number"
+        },
+        {
+          "name": "branch_code",
+          "description": "Branch code"
+        },
+        {
+          "name": "branch_name",
+          "description": "Branch name"
+        },
+        {
+          "name": "swift_code",
+          "description": "Bank swift code"
+        },
+        {
+          "name": "payment_code",
+          "description": "Payment code (Hang Seng and HSBC only)"
+        },
+        {
+          "name": "dbs_company_id",
+          "description": "DBS company ID (DBS only)"
+        },
+        {
+          "name": "employee_using_cheque",
+          "description": "Employee using cheque"
+        },
+        {
+          "name": "location_parameters",
+          "description": "Below are Employee's Address related fields"
+        },
+        {
+          "name": "line_1",
+          "description": "Address line 1"
+        },
+        {
+          "name": "line_2",
+          "description": "Address line 2"
+        },
+        {
+          "name": "postal_code",
+          "description": "Postal code"
+        },
+        {
+          "name": "state",
+          "description": "State"
+        },
+        {
+          "name": "country_name",
+          "description": "Country name"
+        },
+        {
+          "name": "additional_sg_employee_info_parameters",
+          "description": "Below are SG Employee's related fields"
+        },
+        {
+          "name": "cpf_donation_type",
+          "description": "SHG donation type"
+        },
+        {
+          "name": "cpf_additional_donation_type",
+          "description": "Additional SHG donation type"
+        },
+        {
+          "name": "identification_expiry_date",
+          "description": "Identification expiry date. When you use the API to update this field, we will map to the immigration expiry field. E.g. for Spass holders, we will map to spass_expiry_date."
+        },
+        {
+          "name": "identification_issue_date",
+          "description": "Identification issue date. When you use the API to update this field, we will map to the immigration issue field. E.g. for Spass holders, we will map to spass_issue_date."
+        },
+        {
+          "name": "spass_expiry_date",
+          "description": "S Pass expiry date"
+        },
+        {
+          "name": "spass_issue_date",
+          "description": "S Pass issue date"
+        },
+        {
+          "name": "spass_dcs",
+          "description": "S Pass Dependency Ceiling"
+        },
+        {
+          "name": "epass_number",
+          "description": "E Pass Number"
+        },
+        {
+          "name": "epass_expiry_date",
+          "description": "E Pass expiry date"
+        },
+        {
+          "name": "epass_issue_date",
+          "description": "E Pass issue date"
+        },
+        {
+          "name": "pr_status",
+          "description": "PR status"
+        },
+        {
+          "name": "pr_effective_date",
+          "description": "PR effective date"
+        },
+        {
+          "name": "pr_expiry_date",
+          "description": "PR expiry date"
+        },
+        {
+          "name": "pepass_issue_date",
+          "description": "PE Pass issue date"
+        },
+        {
+          "name": "pepass_expiry_date",
+          "description": "PE Pass expiry date"
+        },
+        {
+          "name": "wp_expiry_date",
+          "description": "Work Pass expiry date"
+        },
+        {
+          "name": "wp_issue_date",
+          "description": "Work Pass issue date"
+        },
+        {
+          "name": "techpass_expiry_date",
+          "description": "Tech Pass expiry date"
+        },
+        {
+          "name": "techpass_issue_date",
+          "description": "Tech Pass issue date"
+        },
+        {
+          "name": "onepass_expiry_date",
+          "description": "ONE Pass expiry date"
+        },
+        {
+          "name": "onepass_issue_date",
+          "description": "ONE Pass issue date"
+        },
+        {
+          "name": "tep_expiry_date",
+          "description": "Training Employment Pass (TEP) expiry date"
+        },
+        {
+          "name": "tep_issue_date",
+          "description": "Training Employment Pass (TEP) issue date"
+        },
+        {
+          "name": "twp_expiry_date",
+          "description": "Training Work Permit (TWP) expiry date"
+        },
+        {
+          "name": "twp_issue_date",
+          "description": "Training Work Permit (TWP) issue date"
+        },
+        {
+          "name": "wp_worker_category",
+          "description": "Work Pass worker category"
+        },
+        {
+          "name": "wp_dcs",
+          "description": "Work Pass dependency ceiling"
+        },
+        {
+          "name": "wp_number",
+          "description": "Work Pass Number"
+        },
+        {
+          "name": "shg_automation_enabled",
+          "description": "Infer SHG contribution fields from [\"citizenship\", \"race\", \"religion\"]. If passed true, you can omit both cpf_donation_type and cpf_additional_donation_type fields. If unable to determine, object will fail to save"
+        },
+        {
+          "name": "shg_contribution_amount_option",
+          "description": "SHG contribution amount option ([\"statutory_default\", \"custom_shg_amount\"])"
+        },
+        {
+          "name": "shg_override_amount",
+          "description": "Special cases where SHG needs to be overriden with CPF approval (For MBMF, use this field for auto splitting, or override Mosque Building and Mendaki amounts using the following two fields)"
+        },
+        {
+          "name": "shg_mbmf_mbf_override_amount",
+          "description": "Special cases where Mosque Building portion needs to be overriden with CPF approval (For MBMF custom amount only)"
+        },
+        {
+          "name": "shg_mbmf_mendaki_override_amount",
+          "description": "Special cases where Mendaki Portion needs to be overriden with CPF approval (For MBMF custom amount only)"
+        },
+        {
+          "name": "letter_of_consent_expiry_date",
+          "description": "Letter of consent expiry date"
+        },
+        {
+          "name": "letter_of_consent_issue_date",
+          "description": "Letter of consent issue date"
+        },
+        {
+          "name": "preapproved_letter_of_consent_expiry_date",
+          "description": "Pre-Approved Letter of consent expiry date"
+        },
+        {
+          "name": "preapproved_letter_of_consent_issue_date",
+          "description": "Pre-Approved Letter of consent issue date"
+        },
+        {
+          "name": "halal_certification_issue_date",
+          "description": "Halal certification issue date"
+        },
+        {
+          "name": "halal_certification_expiry_date",
+          "description": "Halal certification expiry date"
+        },
+        {
+          "name": "hygiene_certification_issue_date",
+          "description": "Hygiene certification issue date"
+        },
+        {
+          "name": "hygiene_certification_expiry_date",
+          "description": "Hygiene certification expiry date"
+        },
+        {
+          "name": "additional_shg_contribution_amount_option",
+          "description": "Additional SHG contribution amount option ([\"statutory_default\", \"custom_shg_amount\"])"
+        },
+        {
+          "name": "additional_shg_override_amount",
+          "description": "Additional SHG override amount"
+        },
+        {
+          "name": "additional_shg_mbmf_mbf_override_amount",
+          "description": "Additional SHG override - Mosque Building amount"
+        },
+        {
+          "name": "additional_shg_mbmf_mendaki_override_amount",
+          "description": "Additional SHG override - Mendaki amount"
+        }
+      ],
+      "example": {
+        "invite_user": true,
+        "employee": {
+          "employee_id": 1,
+          "first_name": "Hafsah",
+          "last_name": "Haigh",
+          "identification_full_name": "Hafsah Haigh",
+          "email": "test@gmail.com",
+          "payment_method": "Bank Transfer",
+          "hired_date": "1/1/2015",
+          "contact_number": 123456789,
+          "ssn": "S1111111D",
+          "citizenship": "S Pass",
+          "nationality": "Chinese",
+          "gender": "Male",
+          "marital_status": "Single",
+          "passport_number": "MA123456",
+          "passport_date_of_issue": "01/01/2017",
+          "passport_date_of_expiry": "01/12/2022",
+          "passport_place_of_issue": "Singapore",
+          "vaccination_status": "Fully Vaccinated",
+          "vaccine_brand": "Pfizer-BioNTech",
+          "date_of_first_dose": "01/01/2021",
+          "date_of_second_dose": "01/11/2021",
+          "vaccine_booster_brand": "Pfizer-BioNTech",
+          "date_of_booster_dose": "01/12/2021",
+          "vaccination_remarks": "",
+          "chinese_name": "Xing Zexi",
+          "nickname": "Jerry",
+          "birthdate": "01/01/2015",
+          "confirmation_date": "01/01/2019",
+          "default_cost_centre_id": 12,
+          "custom_fields": {
+            "Education": {
+              "CGPA": "4.00",
+              "University": "Example University"
+            }
+          },
+          "current_job_attributes": {
+            "title": "Front-end Engineer",
+            "department": "Engineer",
+            "start_date": "01/01/2015",
+            "rate_of_pay": "Monthly",
+            "currency": "SGD",
+            "amount": 4000
+          },
+          "bank_account_attributes": {
+            "bank_type": "DBS",
+            "bank_code": 1,
+            "account_name": "Hafsah Haigh",
+            "number": 131231231231231230,
+            "branch_code": 1,
+            "branch_name": "",
+            "swift_code": "",
+            "payment_code": 1,
+            "dbs_company_id": ""
+          },
+          "additional_sg_employee_info_attributes": {
+            "cpf_donation_type": "N/A",
+            "cpf_additional_donation_type": "N/A",
+            "identification_issue_date": "",
+            "identification_expiry_date": "",
+            "spass_expiry_date": "01/01/2022",
+            "spass_issue_date": "01/01/2015",
+            "spass_dcs": "",
+            "epass_expiry_date": "",
+            "epass_issue_date": "",
+            "pr_status": "",
+            "pr_effective_date": "",
+            "pr_expiry_date": "",
+            "pepass_issue_date": "",
+            "pepass_expiry_date": "",
+            "wp_issue_date": "",
+            "wp_expiry_date": "",
+            "wp_worker_category": "",
+            "wp_dcs": "",
+            "wp_number": "",
+            "shg_override_amount": 0,
+            "letter_of_consent_issue_date": "",
+            "letter_of_consent_expiry_date": "",
+            "halal_certification_issue_date": "",
+            "halal_certification_expiry_date": "",
+            "hygiene_certification_issue_date": "",
+            "hygiene_certification_expiry_date": ""
+          },
+          "location_attributes": {
+            "line_1": "Address Line 1",
+            "line_2": "Address Line 2",
+            "postal_code": 12345,
+            "state": null,
+            "country_name": "Singapore"
+          },
+          "cost_centre_ids": [
+            12,
+            13
+          ],
+          "next_of_kins_attributes": [
+            {
+              "name": "John Doe",
+              "relationship": "Father",
+              "birthdate": "01/01/2015",
+              "contact_number": 123456789,
+              "alternate_contact_number": 987654321,
+              "citizenship": "Singaporean",
+              "gender": "Male"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Delete Employee",
+      "anchor": "delete-employee",
+      "method": "DELETE",
+      "path": "employees/:id",
+      "fields": []
+    },
+    {
+      "group": "Employees",
+      "title": "Update Employee",
+      "anchor": "update-employee",
+      "method": "PUT",
+      "path": "employees/:id",
+      "fields": [],
+      "example": {
+        "employee": {
+          "first_name": "Mary",
+          "last_name": "Lan"
+        }
+      }
+    },
+    {
+      "group": "Employees",
+      "title": "Update Employee identification_full_name",
+      "anchor": "update-employee-identification_full_name",
+      "method": "PUT",
+      "path": "employees/:id",
+      "fields": [],
+      "example": {
+        "employee": {
+          "identification_full_name": "John Michael Smith"
+        }
+      }
+    },
+    {
+      "group": "Holiday Policies",
+      "title": "Create Holiday Policy",
+      "anchor": "create-holiday-policy",
+      "method": "POST",
+      "path": "holiday_policies",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Name of the holiday policy"
+        },
+        {
+          "name": "country_id",
+          "description": "Country ID for the policy"
+        },
+        {
+          "name": "state_id",
+          "description": "State/Region ID for the policy"
+        },
+        {
+          "name": "description",
+          "description": "Description of the policy"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Array of employee IDs to assign to this policy"
+        }
+      ],
+      "example": {
+        "name": "New Holiday Policy",
+        "country_id": 2,
+        "description": "Test holiday policy"
+      }
+    },
+    {
+      "group": "Holiday Policies",
+      "title": "Delete Holiday Policy",
+      "anchor": "delete-holiday-policy",
+      "method": "DELETE",
+      "path": "holiday_policies/:id",
+      "fields": []
+    },
+    {
+      "group": "Holiday Policies",
+      "title": "Delete Holiday Policy Modification",
+      "anchor": "delete-holiday-policy-modification",
+      "method": "DELETE",
+      "path": "holiday_policies/:id/modifications",
+      "fields": [
+        {
+          "name": "holiday_date required",
+          "description": "Holiday date to delete modification for (YYYY-MM-DD)"
+        }
+      ],
+      "example": {
+        "holiday_date": "2026-06-22"
+      }
+    },
+    {
+      "group": "Holiday Policies",
+      "title": "Update Holiday Policy",
+      "anchor": "update-holiday-policy",
+      "method": "PUT",
+      "path": "holiday_policies/:id",
+      "fields": [
+        {
+          "name": "name",
+          "description": "Name of the holiday policy"
+        },
+        {
+          "name": "country_id",
+          "description": "Country ID for the policy"
+        },
+        {
+          "name": "state_id",
+          "description": "State/Region ID for the policy"
+        },
+        {
+          "name": "description",
+          "description": "Description of the policy"
+        }
+      ],
+      "example": {
+        "name": "Updated Policy Name",
+        "description": "Updated description"
+      }
+    },
+    {
+      "group": "Holiday Policies",
+      "title": "Upsert Holiday Policy Modification",
+      "anchor": "upsert-holiday-policy-modification",
+      "method": "POST",
+      "path": "holiday_policies/:id/modifications",
+      "fields": [
+        {
+          "name": "holiday_date required",
+          "description": "Holiday date (YYYY-MM-DD)"
+        },
+        {
+          "name": "name required",
+          "description": "Name of the holiday"
+        },
+        {
+          "name": "duration required",
+          "description": "Duration of holiday (all_day, first_half_of_day, second_half_of_day)"
+        },
+        {
+          "name": "is_active required",
+          "description": "Whether the holiday is active"
+        },
+        {
+          "name": "holiday_type",
+          "description": "Type of holiday (public_holiday, statutory_holiday)"
+        }
+      ],
+      "example": {
+        "holiday_date": "2024-06-15",
+        "name": "Custom Holiday",
+        "duration": "all_day",
+        "is_active": true,
+        "holiday_type": "public_holiday"
+      }
+    },
+    {
+      "group": "Jobs",
+      "title": "Create Job",
+      "anchor": "create-job",
+      "method": "POST",
+      "path": "jobs",
+      "fields": [
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "title",
+          "description": "Job Title"
+        },
+        {
+          "name": "department",
+          "description": "Job Department"
+        },
+        {
+          "name": "start_date required",
+          "description": "Job Start Date"
+        },
+        {
+          "name": "end_date required",
+          "description": "Job End Date"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        },
+        {
+          "name": "amount",
+          "description": "Basic pay amount"
+        },
+        {
+          "name": "currency",
+          "description": "Currency"
+        },
+        {
+          "name": "remarks",
+          "description": "Job Remarks"
+        }
+      ],
+      "example": {
+        "title": "",
+        "employee_id": 1447,
+        "job": {
+          "title": "Testing job",
+          "department": "Testing Department",
+          "start_date": "03/05/2019",
+          "end_date": "31/05/2020",
+          "currency": "SGD",
+          "amount": 1000,
+          "rate_of_pay": "Monthly",
+          "remarks": "Testing remark"
+        }
+      }
+    },
+    {
+      "group": "Jobs",
+      "title": "Delete Job",
+      "anchor": "delete-job",
+      "method": "DELETE",
+      "path": "jobs/:id",
+      "fields": []
+    },
+    {
+      "group": "Jobs",
+      "title": "Update Job",
+      "anchor": "update-job",
+      "method": "PUT",
+      "path": "jobs/:id",
+      "fields": [],
+      "example": {
+        "job": {
+          "title": "Updated job",
+          "department": "Updated Department",
+          "currency": "HKD",
+          "start_date": "01/01/2017",
+          "end_date": "03/01/2019",
+          "amount": 2000,
+          "rate_of_pay": "Daily"
+        }
+      }
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Approve leave",
+      "anchor": "approve-leave",
+      "method": "PATCH",
+      "path": "leave_beta/applications/approve/:id",
+      "fields": []
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Create leave application",
+      "anchor": "create-leave-application",
+      "method": "POST",
+      "path": "leave_beta/applications",
+      "fields": [
+        {
+          "name": "approver_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "category required",
+          "description": "'type' or 'oil'"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "applied_durations",
+          "description": "json array of duration json object with date (YYYY-MM-DD) and type as attributes. type must be 'full_day', 'first_half' or 'second_half'. See Leave Application flow for details"
+        },
+        {
+          "name": "working_days",
+          "description": "json array of working_day json object with date (YYYY-MM-DD) and type as attributes. type must be 'full_day', 'first_half', 'second_half', 'holiday' or 'not_working'"
+        },
+        {
+          "name": "category_id",
+          "description": "Leave Type ID for 'type' category, Off In Lieu ID for 'oil' category"
+        }
+      ],
+      "example": {
+        "employee_id": 1531,
+        "category_id": 81,
+        "category": "type",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-01",
+        "remarks": "test",
+        "working_days": [
+          {
+            "date": "2026-06-01",
+            "type": "full_day"
+          }
+        ],
+        "applied_durations": [
+          {
+            "date": "2026-06-01",
+            "type": "full_day"
+          }
+        ],
+        "approvers": [
+          {
+            "approver_id": 1541,
+            "level": 1
+          }
+        ]
+      }
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Delete leave application",
+      "anchor": "delete-leave-application",
+      "method": "DELETE",
+      "path": "leave_beta/applications/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Leave Application ID"
+        }
+      ]
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Delete leave attachments",
+      "anchor": "delete-leave-attachments",
+      "method": "DELETE",
+      "path": "leave_beta/attachments",
+      "fields": [
+        {
+          "name": "ids required",
+          "description": "comma separated Attachment IDs"
+        }
+      ],
+      "example": "ids: 4,2"
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Reject leave",
+      "anchor": "reject-leave",
+      "method": "PATCH",
+      "path": "leave_beta/applications/reject/:id",
+      "fields": []
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "Upload leave attachment",
+      "anchor": "upload-leave-attachment",
+      "method": "POST",
+      "path": "leave_beta/attachments/upload",
+      "fields": [],
+      "example": "------------XnJLe9ZIbbGUYtzPQJ16u1\ncontent-disposition: form-data; name=\"leave_application_id\"\n\n30\n------------XnJLe9ZIbbGUYtzPQJ16u1\ncontent-disposition: form-data; name=\"employee_id\"\n\n1531\n------------XnJLe9ZIbbGUYtzPQJ16u1\ncontent-disposition: form-data; name=\"file\"; filename=\"dummy_image.png\"\ncontent-type: image/png\ncontent-length: 31798\n\n[uploaded data]\n------------XnJLe9ZIbbGUYtzPQJ16u1--"
+    },
+    {
+      "group": "Leave Applications (BETA)",
+      "title": "delete multiple leave applications",
+      "anchor": "delete-multiple-leave-applications",
+      "method": "DELETE",
+      "path": "leave_beta/applications",
+      "fields": [],
+      "example": "employee_id: 1531\nleave_application_ids: 11"
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Add new levels to a leave approval structure",
+      "anchor": "add-new-levels-to-a-leave-approval-structure",
+      "method": "POST",
+      "path": "leave_beta/leave_approval_structures/:id/levels",
+      "fields": [
+        {
+          "name": "approver_ids required",
+          "description": "json array of approver_ids and approval level"
+        }
+      ],
+      "example": {
+        "approvers": [
+          {
+            "approver_ids": [
+              1552
+            ],
+            "level": 2
+          }
+        ]
+      }
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Assign approvers to an existing level of a leave approval structure",
+      "anchor": "assign-approvers-to-an-existing-level-of-a-leave-approval-structure",
+      "method": "PUT",
+      "path": "leave_beta/leave_approval_structures/:id/assign_approvers",
+      "fields": [
+        {
+          "name": "approver_ids required",
+          "description": "json array of approver_ids and approval level"
+        }
+      ],
+      "example": {
+        "approvers": [
+          {
+            "approver_ids": [
+              1552
+            ],
+            "level": 1
+          }
+        ]
+      }
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Assign employees to a leave approval structure",
+      "anchor": "assign-employees-to-a-leave-approval-structure",
+      "method": "PUT",
+      "path": "leave_beta/leave_approval_structures/:id/assign_employees",
+      "fields": [
+        {
+          "name": "employee_ids required",
+          "description": "comma separated Employee IDs"
+        },
+        {
+          "name": "last_employee_id",
+          "description": "For pagination. Results returned will start from this last seen id + 1"
+        },
+        {
+          "name": "limit",
+          "description": "For pagination. Number of items per page (default: 20, max:50)"
+        }
+      ],
+      "example": "employee_ids: 1552,1560"
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Remove levels to a leave approval structure",
+      "anchor": "remove-levels-to-a-leave-approval-structure",
+      "method": "DELETE",
+      "path": "leave_beta/leave_approval_structures/:id/levels",
+      "fields": [
+        {
+          "name": "approver_ids required",
+          "description": "json array of approver_ids and approval level"
+        }
+      ],
+      "example": {
+        "levels": [
+          1
+        ]
+      }
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Unassign approvers to an existing level of a leave approval structure",
+      "anchor": "unassign-approvers-to-an-existing-level-of-a-leave-approval-structure",
+      "method": "PUT",
+      "path": "leave_beta/leave_approval_structures/:id/unassign_approvers",
+      "fields": [
+        {
+          "name": "approver_ids required",
+          "description": "json array of approver_ids and approval level"
+        }
+      ],
+      "example": {
+        "approvers": [
+          {
+            "approver_ids": [
+              1560
+            ],
+            "level": 1
+          }
+        ]
+      }
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "Unassign employees of a leave approval structure",
+      "anchor": "unassign-employees-of-a-leave-approval-structure",
+      "method": "PUT",
+      "path": "leave_beta/leave_approval_structures/:id/unassign_employees",
+      "fields": [],
+      "example": "employee_ids: 1552,1560"
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "creates a leave approval structure",
+      "anchor": "creates-a-leave-approval-structure",
+      "method": "POST",
+      "path": "leave_beta/leave_approval_structures",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "company_id required",
+          "description": "'type' or 'oil'"
+        },
+        {
+          "name": "company_default",
+          "description": "COMPANY ID"
+        },
+        {
+          "name": "employee_ids",
+          "description": "json array of Employee ids. These employees will be assigned to the leave approval structure"
+        },
+        {
+          "name": "approver_order",
+          "description": "acceptable values: 'no_order', 'ascending_order', 'descending_order'. Sets the order of leave applications approval' emails. No order: Approval emails will be sent to all approvers at the same time. Ascending order: Approval emails will be send to 1st level then 2nd level. Descending order: approval emails be will sent to 2nd Level then 1st Level Approvers"
+        },
+        {
+          "name": "flexible_approval_structure",
+          "description": "false (Not Flexible), true (Flexible). Not flexible means all levels have to be assigned an approver during leave application. Flexible means some levels can not assigned for further flexibility during leave application"
+        }
+      ],
+      "example": {
+        "name": "new Test LAS ",
+        "company_id": 333,
+        "company_default": false,
+        "employee_ids": [
+          1552,
+          1560
+        ]
+      }
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "deletes a leave approval structure",
+      "anchor": "deletes-a-leave-approval-structure",
+      "method": "DELETE",
+      "path": "leave_beta/leave_approval_structures/:id",
+      "fields": []
+    },
+    {
+      "group": "Leave Approval Structure (BETA)",
+      "title": "updates a leave approval structure",
+      "anchor": "updates-a-leave-approval-structure",
+      "method": "PUT",
+      "path": "leave_beta/leave_approval_structures/:id",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "company_id required",
+          "description": "'type' or 'oil'"
+        },
+        {
+          "name": "company_default required",
+          "description": "COMPANY ID"
+        },
+        {
+          "name": "employee_ids",
+          "description": "json array of Employee ids. These employees will be assigned to the leave approval structure"
+        },
+        {
+          "name": "approver_order",
+          "description": "acceptable values: 'no_order', 'ascending_order', 'descending_order'. Sets the order of leave applications approval' emails. No order: Approval emails will be sent to all approvers at the same time. Ascending order: Approval emails will be send to 1st level then 2nd level. Descending order: approval emails be will sent to 2nd Level then 1st Level Approvers"
+        },
+        {
+          "name": "flexible_approval_structure",
+          "description": "false (Not Flexible), true (Flexible). Not flexible means all levels have to be assigned an approver during leave application. Flexible means some levels can not assigned for further flexibility during leave application"
+        }
+      ],
+      "example": {
+        "name": "new Test LAS 2",
+        "company_id": 333,
+        "employee_ids": [
+          1552,
+          1560
+        ]
+      }
+    },
+    {
+      "group": "Metadata",
+      "title": "Get Metadata Items",
+      "anchor": "get-metadata-items",
+      "method": "POST",
+      "path": "metadata/get_items",
+      "fields": [
+        {
+          "name": "fields required",
+          "description": "List of parameters"
+        }
+      ],
+      "example": {
+        "fields": [
+          "company",
+          "marital_status",
+          "gender",
+          "payment_method",
+          "rate_of_pay",
+          "country_name",
+          "region",
+          "citizenship",
+          "nationality",
+          "race",
+          "religion",
+          "bank_type",
+          "currency",
+          "relationship",
+          "wp_worker_category",
+          "cpf_donation_type",
+          "wp_dcs",
+          "spass_dcs",
+          "voluntary_employer_contribution_type",
+          "voluntary_employee_contribution_type",
+          "voluntary_employer_contribution_rate",
+          "voluntary_employee_contribution_rate",
+          "socso_setting",
+          "employee_epf_setting",
+          "employer_epf_setting",
+          "period",
+          "pay_item_types"
+        ]
+      }
+    },
+    {
+      "group": "Next of Kins",
+      "title": "Create Next of Kin",
+      "anchor": "create-next-of-kin",
+      "method": "POST",
+      "path": "next_of_kins",
+      "fields": [
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "name required",
+          "description": "Name"
+        },
+        {
+          "name": "contact_number",
+          "description": "Contact Number"
+        },
+        {
+          "name": "alternate_contact_number",
+          "description": "Alternate Contact Number"
+        },
+        {
+          "name": "birthdate",
+          "description": "Birth Date"
+        },
+        {
+          "name": "relationship required",
+          "description": "Relationship"
+        },
+        {
+          "name": "gender",
+          "description": "Gender"
+        },
+        {
+          "name": "citizenship",
+          "description": "Citizenship"
+        },
+        {
+          "name": "ssn",
+          "description": "Identification Number"
+        },
+        {
+          "name": "passport",
+          "description": "Passport Number"
+        },
+        {
+          "name": "marriage_date",
+          "description": "Marriage Date"
+        }
+      ],
+      "example": {
+        "employee_id": 1635,
+        "next_of_kin": {
+          "name": "NOK Name",
+          "birthdate": "01/01/2018",
+          "relationship": "Wife",
+          "gender": "Male",
+          "citizenship": "Singaporean",
+          "ssn": "12345678"
+        }
+      }
+    },
+    {
+      "group": "Next of Kins",
+      "title": "Delete Next of Kin",
+      "anchor": "delete-next-of-kin",
+      "method": "DELETE",
+      "path": "next_of_kins/:id",
+      "fields": []
+    },
+    {
+      "group": "Next of Kins",
+      "title": "Update Next of Kin",
+      "anchor": "update-next-of-kin",
+      "method": "PUT",
+      "path": "next_of_kins/:id",
+      "fields": [],
+      "example": {
+        "next_of_kin": {
+          "name": "Change name"
+        }
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Create Adhoc Payment",
+      "anchor": "create-adhoc-payment",
+      "method": "POST",
+      "path": "payroll/adhoc_payment",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "pay_items required",
+          "description": "Below are pay items related fields"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "item_type required",
+          "description": "Pay Item Type"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "amount required",
+          "description": "Amount"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 20
+        },
+        "pay_items": [
+          {
+            "employee_id": "K00001",
+            "item_type": "Allowance",
+            "amount": 1000,
+            "remarks": ""
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Create Attendance Payment",
+      "anchor": "create-attendance-payment",
+      "method": "POST",
+      "path": "payroll/attendance_payment",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "pay_items required",
+          "description": "Below are pay items related fields"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "item_type required",
+          "description": "Pay Item Type"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "amount required",
+          "description": "Amount"
+        },
+        {
+          "name": "no_of_hours_slash_days",
+          "description": "Number of days or hours worked"
+        },
+        {
+          "name": "rate_of_pay",
+          "description": "Rate of pay"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 21
+        },
+        "pay_items": [
+          {
+            "employee_id": "K00001",
+            "item_type": "Regular Hours",
+            "amount": 1000,
+            "rate_of_pay": 20,
+            "no_of_hours_slash_days": 8,
+            "remarks": null
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Create Leave Payment or Deduction",
+      "anchor": "create-leave-payment-or-deduction",
+      "method": "POST",
+      "path": "payroll/leave_payment_or_deduction",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "pay_items required",
+          "description": "Below are pay items related fields"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "item_type required",
+          "description": "Pay Item Type"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "amount",
+          "description": "If provided, the system will use this amount instead of the calculated value"
+        },
+        {
+          "name": "override_working_days",
+          "description": "If provided, will override the NPL calculation working days"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 22
+        },
+        "pay_items": [
+          {
+            "employee_id": "K00001",
+            "item_type": "No Pay Leave(Unpaid Leave)",
+            "remarks": "1/9/2018",
+            "amount": 2000,
+            "override_working_days": 21
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Create Payroll Payment",
+      "anchor": "create-payroll-payment",
+      "method": "POST",
+      "path": "payroll/payroll_payment",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "period required",
+          "description": "Period of payment"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "with_pay_items",
+          "description": "With Monthly pay items"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs to create payment for"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "with_pay_items": true
+        },
+        "employee_ids": [
+          "K00001"
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Create Recurring Payment",
+      "anchor": "create-recurring-payment",
+      "method": "POST",
+      "path": "payroll/recurring_payment",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "pay_items required",
+          "description": "Below are pay items related fields"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "item_type required",
+          "description": "Pay Item Type"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "amount required",
+          "description": "Amount"
+        },
+        {
+          "name": "actual_no_of_working_days",
+          "description": "Actual number of working days (If provided, the default calculated value will be overridden)"
+        },
+        {
+          "name": "total_no_of_working_days",
+          "description": "Total number of working days (If provided, the default calculated value will be overridden)"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 17
+        },
+        "pay_items": [
+          {
+            "employee_id": "K00001",
+            "item_type": "Basic Pay",
+            "amount": 1000,
+            "remarks": null,
+            "actual_no_of_working_days": 22,
+            "total_no_of_working_days": 30
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Delete Adhoc Pay Item",
+      "anchor": "delete-adhoc-pay-item",
+      "method": "DELETE",
+      "path": "payroll/adhoc_payment/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Pay item ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Delete Attendance Pay Item",
+      "anchor": "delete-attendance-pay-item",
+      "method": "DELETE",
+      "path": "payroll/attendance_payment/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Pay item ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Delete Leave Pay Item",
+      "anchor": "delete-leave-pay-item",
+      "method": "DELETE",
+      "path": "payroll/leave_payment_or_deduction/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Pay item ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Delete Payroll Payment",
+      "anchor": "delete-payroll-payment",
+      "method": "DELETE",
+      "path": "payroll/payroll_payment/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Payment ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Delete Recurring Pay Item",
+      "anchor": "delete-recurring-pay-item",
+      "method": "DELETE",
+      "path": "payroll/recurring_payment/:id",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Pay item ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Export Payroll",
+      "anchor": "export-payroll",
+      "method": "POST",
+      "path": "payroll/export_payroll",
+      "fields": [
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "period required",
+          "description": "Period of payment"
+        },
+        {
+          "name": "pay_date",
+          "description": "Pay date"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": 2018,
+        "period": "Whole Month"
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Get Payslips Data",
+      "anchor": "get-payslips-data",
+      "method": "POST",
+      "path": "payroll/get_payslips_data",
+      "fields": [
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs"
+        },
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": 2018,
+        "employee_ids": [
+          "K00001"
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Get Payslips PDF",
+      "anchor": "get-payslips-pdf",
+      "method": "POST",
+      "path": "payroll/get_payslips",
+      "fields": [
+        {
+          "name": "employee_ids required",
+          "description": "Employee IDs"
+        },
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "include_employee_data",
+          "description": "Returns employee data along with payslip URL"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": 2018,
+        "employee_ids": [
+          1701
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Get Payslips PDF with Employee Details",
+      "anchor": "get-payslips-pdf-with-employee-details",
+      "method": "POST",
+      "path": "payroll/get_payslips",
+      "fields": [
+        {
+          "name": "employee_ids required",
+          "description": "Employee IDs"
+        },
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "include_employee_data",
+          "description": "Returns employee data along with payslip URL"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": 2018,
+        "employee_ids": [
+          1702
+        ],
+        "include_employee_data": true
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Process Payroll Payment",
+      "anchor": "process-payroll-payment",
+      "method": "POST",
+      "path": "payroll/payroll_payment/:id/process",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Payment ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Publish Payslips",
+      "anchor": "publish-payslips",
+      "method": "POST",
+      "path": "payroll/publish_payslips",
+      "fields": [
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "payslip_pay_date required",
+          "description": "Payslip Pay Date"
+        },
+        {
+          "name": "payslip_send_on_pd_setting required",
+          "description": "payslip Send On Pay Date Setting"
+        },
+        {
+          "name": "attach_payslip_to_email required",
+          "description": "Attach Payslip To Email"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": "2018",
+        "payslip_pay_date": "30/09/2018",
+        "payslip_send_on_pd_setting": 0,
+        "attach_payslip_to_email": 0
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Pull Leave Applications",
+      "anchor": "pull-leave-applications",
+      "method": "POST",
+      "path": "payroll/pull_leave_applications",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        }
+      ],
+      "example": {
+        "payment": {
+          "month": "September",
+          "year": 2018,
+          "period": "Whole Month",
+          "pay_group": null
+        }
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Set Payment to Draft",
+      "anchor": "set-payment-to-draft",
+      "method": "POST",
+      "path": "payroll/payroll_payment/:id/draft",
+      "fields": [
+        {
+          "name": "id required",
+          "description": "Payment ID"
+        }
+      ]
+    },
+    {
+      "group": "Payroll",
+      "title": "Unpublish Payslips",
+      "anchor": "unpublish-payslips",
+      "method": "POST",
+      "path": "payroll/unpublish_payslips",
+      "fields": [
+        {
+          "name": "month required",
+          "description": "Month of payment"
+        },
+        {
+          "name": "year required",
+          "description": "Year of payment"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs"
+        }
+      ],
+      "example": {
+        "month": "September",
+        "year": "2018"
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Update Payment Settings",
+      "anchor": "update-payment-settings",
+      "method": "POST",
+      "path": "payroll/update_payment_settings",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "settings required",
+          "description": "Settings related fields"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "employees_payment_methods",
+          "description": "Indicate payment mode for employee: Bank/Cheque/Forex/Cash payment"
+        },
+        {
+          "name": "selected_cost_centre_id",
+          "description": "Cost centre ID to process the employee under (defaults to default cost centre)"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 14
+        },
+        "settings": [
+          {
+            "employee_id": "K00001",
+            "is_bank_payment": false,
+            "selected_cost_centre_id": 47,
+            "employees_payment_methods": "Bank Transfer"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Update without payment methods - is_bank_payment set to false",
+      "anchor": "update-without-payment-methods-is_bank_payment-set-to-false",
+      "method": "POST",
+      "path": "payroll/update_payment_settings",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "settings required",
+          "description": "Settings related fields"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "employees_payment_methods",
+          "description": "Indicate payment mode for employee: Bank/Cheque/Forex/Cash payment"
+        },
+        {
+          "name": "selected_cost_centre_id",
+          "description": "Cost centre ID to process the employee under (defaults to default cost centre)"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 16
+        },
+        "settings": [
+          {
+            "employee_id": "K00001",
+            "is_bank_payment": false,
+            "selected_cost_centre_id": 51
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "Update without payment methods - is_bank_payment set to true",
+      "anchor": "update-without-payment-methods-is_bank_payment-set-to-true",
+      "method": "POST",
+      "path": "payroll/update_payment_settings",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "settings required",
+          "description": "Settings related fields"
+        },
+        {
+          "name": "employee_id",
+          "description": "Employee ID"
+        },
+        {
+          "name": "employees_payment_methods",
+          "description": "Indicate payment mode for employee: Bank/Cheque/Forex/Cash payment"
+        },
+        {
+          "name": "selected_cost_centre_id",
+          "description": "Cost centre ID to process the employee under (defaults to default cost centre)"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 15
+        },
+        "settings": [
+          {
+            "employee_id": "K00001",
+            "is_bank_payment": true,
+            "selected_cost_centre_id": 49
+          }
+        ]
+      }
+    },
+    {
+      "group": "Payroll",
+      "title": "should preserve statutory proration settings for PR effective employees (currently demonstrates bug)",
+      "anchor": "should-preserve-statutory-proration-settings-for-pr-effective-employees-currently-demonstrates-bug",
+      "method": "POST",
+      "path": "payroll/recurring_payment",
+      "fields": [
+        {
+          "name": "payment required",
+          "description": "Payment related fields"
+        },
+        {
+          "name": "id",
+          "description": "Payment ID (If not specified, last payment created by API will be used)"
+        },
+        {
+          "name": "month",
+          "description": "Month of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "year",
+          "description": "Year of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "period",
+          "description": "Period of payment (Mandatory if id not specified)"
+        },
+        {
+          "name": "pay_group",
+          "description": "Pay group of payment"
+        },
+        {
+          "name": "pay_items required",
+          "description": "Below are pay items related fields"
+        },
+        {
+          "name": "employee_id required",
+          "description": "Employee ID"
+        },
+        {
+          "name": "item_type required",
+          "description": "Pay Item Type"
+        },
+        {
+          "name": "remarks",
+          "description": "Remarks"
+        },
+        {
+          "name": "amount required",
+          "description": "Amount"
+        },
+        {
+          "name": "actual_no_of_working_days",
+          "description": "Actual number of working days (If provided, the default calculated value will be overridden)"
+        },
+        {
+          "name": "total_no_of_working_days",
+          "description": "Total number of working days (If provided, the default calculated value will be overridden)"
+        }
+      ],
+      "example": {
+        "payment": {
+          "year": 2018,
+          "month": "September",
+          "period": "Whole Month",
+          "pay_group": null,
+          "id": 19
+        },
+        "pay_items": [
+          {
+            "employee_id": "PR001",
+            "item_type": "Basic Pay",
+            "amount": 5000,
+            "remarks": null,
+            "actual_no_of_working_days": 22,
+            "total_no_of_working_days": 30
+          }
+        ]
+      }
+    },
+    {
+      "group": "Working Days",
+      "title": "Create Working Day",
+      "anchor": "create-working-day",
+      "method": "POST",
+      "path": "working_days",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Working Day Name"
+        },
+        {
+          "name": "company_default",
+          "description": "Company Default"
+        },
+        {
+          "name": "week_schedule required",
+          "description": "Week schedule (An array of 7 elements corresponding to each day in a week starting from Sunday, supported values are not_working, full_day, first_half, second_half, rest_day[only for SG])"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs (This will override the working day's employee)"
+        }
+      ],
+      "example": {
+        "working_day": {
+          "name": "New working day",
+          "company_default": false,
+          "week_schedule": [
+            "not_working",
+            "second_half",
+            "full_day",
+            "full_day",
+            "full_day",
+            "first_half",
+            "not_working"
+          ],
+          "employee_ids": [
+            1970
+          ]
+        }
+      }
+    },
+    {
+      "group": "Working Days",
+      "title": "Delete Working Day",
+      "anchor": "delete-working-day",
+      "method": "DELETE",
+      "path": "working_days/:id",
+      "fields": []
+    },
+    {
+      "group": "Working Days",
+      "title": "Update Working Day",
+      "anchor": "update-working-day",
+      "method": "PUT",
+      "path": "working_days/:id",
+      "fields": [],
+      "example": {
+        "working_day": {
+          "name": "Change name",
+          "week_schedule": [
+            "not_working",
+            "full_day",
+            "full_day",
+            "full_day",
+            "full_day",
+            "not_working",
+            "not_working"
+          ]
+        }
+      }
+    },
+    {
+      "group": "Working Hours",
+      "title": "Create Working Hour",
+      "anchor": "create-working-hour",
+      "method": "POST",
+      "path": "working_hours",
+      "fields": [
+        {
+          "name": "name required",
+          "description": "Working Hour Name"
+        },
+        {
+          "name": "company_default",
+          "description": "Company Default"
+        },
+        {
+          "name": "hours_per_week required",
+          "description": "Hours Per Week"
+        },
+        {
+          "name": "hours_per_day required",
+          "description": "Hours per day (For Part Time ADW Calculation)"
+        },
+        {
+          "name": "employee_ids",
+          "description": "Employee IDs (This will override the Working Hour's employee)"
+        }
+      ],
+      "example": {
+        "working_hour": {
+          "name": "New Working Hour",
+          "company_default": false,
+          "hours_per_week": 44,
+          "employee_ids": [
+            2050
+          ]
+        }
+      }
+    },
+    {
+      "group": "Working Hours",
+      "title": "Delete Working Hour",
+      "anchor": "delete-working-hour",
+      "method": "DELETE",
+      "path": "working_hours/:id",
+      "fields": []
+    },
+    {
+      "group": "Working Hours",
+      "title": "Update Working Hour",
+      "anchor": "update-working-hour",
+      "method": "PUT",
+      "path": "working_hours/:id",
+      "fields": [],
+      "example": {
+        "working_hour": {
+          "name": "Change name",
+          "hours_per_week": 40
+        }
+      }
+    }
+  ]
+}

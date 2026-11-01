@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "talenox": {
+      "command": "npx",
+      "args": ["--yes", "github:deanchong/talenox-mcp"],
+      "env": {
+        "TALENOX_API_TOKEN": "your-company-api-token",
+        "TALENOX_TIMEOUT_MS": "30000"
+      }
+    }
+  }
+}
